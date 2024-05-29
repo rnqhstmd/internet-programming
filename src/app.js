@@ -6,6 +6,8 @@ const { sequelize, connectDB } = require('./config/database');
 const { initModels } = require('./model');
 const dotenv = require('dotenv');
 const authRoutes = require('./route/authRoute');
+const boardRoutes = require('./route/boardRoute');
+const commentRoutes = require('./route/commentRoute');
 
 dotenv.config();
 connectDB();
@@ -28,6 +30,8 @@ app.use(session({
 
 // 라우트 설정
 app.use('/api/auth', authRoutes);
+app.use('/api/boards', boardRoutes);
+app.use('/api', commentRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
