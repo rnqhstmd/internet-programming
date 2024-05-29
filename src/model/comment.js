@@ -9,7 +9,7 @@ const Comment = sequelize.define(
             allowNull: false,
         },
         writerId: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         boardId: {
