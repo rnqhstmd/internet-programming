@@ -14,6 +14,7 @@ app.use(cors({
     origin: true, 
     credential: true
 }));
+app.options('*', cors());
 
 dotenv.config();
 connectDB();
