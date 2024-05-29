@@ -34,7 +34,10 @@ Comment.belongsTo(User, {
 });
 
 const initModels = async () => {
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: false }).catch((err) => {
+    console.error('모델 초기화 실패');
+    console.error(err);
+});;
 };
 
 module.exports = { User, initModels, Board, Comment };
