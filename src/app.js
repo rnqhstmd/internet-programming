@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { sequelize, connectDB } = require('./config/database');
@@ -8,6 +9,11 @@ const dotenv = require('dotenv');
 const authRoutes = require('./route/authRoute');
 const boardRoutes = require('./route/boardRoute');
 const commentRoutes = require('./route/commentRoute');
+
+app.use(cors({
+    origin: true, 
+    credential: true
+}));
 
 dotenv.config();
 connectDB();
