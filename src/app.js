@@ -11,7 +11,7 @@ const boardRoutes = require('./route/boardRoute');
 const commentRoutes = require('./route/commentRoute');
 
 app.use(cors({
-    origin: true, 
+    origin: "http://127.0.0.1:5500", 
     credential: true
 }));
 app.options('*', cors());
