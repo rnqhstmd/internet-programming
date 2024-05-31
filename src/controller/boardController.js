@@ -10,7 +10,7 @@ exports.createBoard = async (req, res) => {
             title,
             content,
             productName,
-            writerId: req.session.user.userId, // 세션에서 사용자 ID 가져오기
+            writerId: req.session.user.id, // 세션에서 사용자 ID 가져오기
         });
         res.status(201).json(board);
     } catch (error) {
