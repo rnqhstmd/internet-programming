@@ -7,7 +7,7 @@ exports.createComment = async (req, res) => {
     console.log("Received boardId:", boardId);
     const { content } = req.body;
     console.log("Received content:", content);
-    const userId = req.session.user.userId; // 세션에서 사용자 ID 추출
+    const userId = req.session.user.id; // 세션에서 사용자 ID 추출
     try {
         // 게시판 존재 확인
         const board = await Board.findByPk(boardId);
@@ -47,7 +47,7 @@ exports.updateComment = async (req, res) => {
         }
 
         // 댓글 수정 권한 확인
-        if (comment.writerId !== req.session.user.userId) {
+        if (comment.writerId !== req.session.user.id) {
             return res.status(403).json({ message: 'Unauthorized' });
         }
 
@@ -77,7 +77,7 @@ exports.deleteComment = async (req, res) => {
         }
 
         // 댓글 삭제 권한 확인
-        if (comment.writerId !== req.session.user.userId) {
+        if (comment.writerId !== req.session.user.id) {
             return res.status(403).json({ message: 'Unauthorized' });
         }
 
