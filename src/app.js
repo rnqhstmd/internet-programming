@@ -31,7 +31,10 @@ app.use(session({
     db: sequelize,
   }),
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24
+    maxAge: 1000 * 60 * 60 * 24,
+    secure: false,
+    httpOnly: true, 
+    sameSite: 'none'
   }
 }));
 
